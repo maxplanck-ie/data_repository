@@ -1,0 +1,7 @@
+genome_url=ftp://ftp.ensembl.org/pub/release-78/fasta/danio_rerio/dna/Danio_rerio.Zv9.dna.toplevel.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.ensembl.org/pub/release-78/gtf/danio_rerio/Danio_rerio.Zv9.78.gtf.gz$$ensembl$$release-78
+
+include ../Makefile.inc
+
+OTHER:

@@ -1,0 +1,27 @@
+genome_url=ftp://ftp.ensembl.org/pub/release-78/fasta/mus_musculus/dna/Mus_musculus.GRCm38.dna_sm.primary_assembly.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M4/gencode.vM4.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$m4$$gencode.map \
+	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M3/gencode.vM3.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$m3$$gencode.map \
+	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M2/gencode.vM2.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$m2$$gencode.map \
+	ftp$$ftp.ensembl.org/pub/release-79/gtf/mus_musculus/Mus_musculus.GRCm38.79.gtf.gz$$ensembl$$release-79 \
+	ftp$$ftp.ensembl.org/pub/release-78/gtf/mus_musculus/Mus_musculus.GRCm38.78.gtf.gz$$ensembl$$release-78 \
+	genePred$$hgdownload.cse.ucsc.edu/goldenPath/mm10/database/refGene.txt.gz$$UCSC$$mm10$$UCSC.map
+
+include ../Makefile.inc
+
+%AnnotatedFeatures.gff:
+	$(eval rel=$(word 2, $(subst /, ,$@)))
+	mkdir -p $(dir $@)
+	wget --quiet -O - ftp://ftp.ensembl.org/pub/$(rel)/regulation/mus_musculus/AnnotatedFeatures.gff.gz \
+		| zcat > $@
+
+UCSC/mm10/rmsk.gtf:
+	mkdir -p $(dir $@)
+	wget --quiet -O - http://hgdownload.soe.ucsc.edu/goldenPath/mm10/database/rmsk.txt.gz \
+	    | zcat \
+	    | awk '{printf "%s\trmsk\texon\t%i\t%i\t%f\t%c\t.\tgene_id \"%s/%s\"; transcript_id \"%s\";\n",$$6,$$7+1,$$8,$$2,$$10,$$13,$$12,$$11}' \
+	    | ../convertChromosomes.py UCSC.map > $@
+
+AnnotatedFeatures: ensembl/release-78/AnnotatedFeatures.gff ensembl/release-79/AnnotatedFeatures.gff
+
+OTHER: AnnotatedFeatures UCSC/mm10/rmsk.gtf

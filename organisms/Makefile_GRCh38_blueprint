@@ -1,0 +1,7 @@
+genome_url=ftp://ftp.ebi.ac.uk/pub/databases/blueprint/reference/20150407_reference_files/GRCh38_no_alt_analysis_set.201503031.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.ebi.ac.uk/pub/databases/blueprint/reference/20150407_reference_files/gencode.v22.annotation.201503031.gtf.gz$$blueprint$$20150407
+
+include ../Makefile.inc
+
+OTHER:

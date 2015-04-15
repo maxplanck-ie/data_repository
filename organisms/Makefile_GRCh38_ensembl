@@ -1,0 +1,8 @@
+genome_url=ftp://ftp.ensembl.org/pub/release-78/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_21/gencode.v21.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$release_21$$gencode.map \
+	ftp$$ftp.ensembl.org/pub/release-78/gtf/homo_sapiens/Homo_sapiens.GRCh38.78.gtf.gz$$Ensembl$$release-78
+
+include ../Makefile.inc
+
+OTHER:

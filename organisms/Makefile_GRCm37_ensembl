@@ -1,0 +1,8 @@
+genome_url=ftp://ftp.ensembl.org/pub/release-65/fasta/mus_musculus/dna/Mus_musculus.NCBIM37.65.dna.toplevel.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M1/gencode.vM1.annotation.gtf.gz$$gencode$$m1$$gencode.map \
+	ftp$$ftp.ensembl.org/pub/release-65/gtf/mus_musculus/Mus_musculus.NCBIM37.65.gtf.gz$$Ensembl$$release-65
+
+include ../Makefile.inc
+
+OTHER:

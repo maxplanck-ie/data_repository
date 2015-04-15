@@ -1,0 +1,18 @@
+#This specifies the URL of the genomic fasta file
+genome_url="ftp://some.url/file.fasta.gz"
+
+#Each line specifies a protocol, URL, source, version, and conversion file separated by $$
+#The conversion file is optional, so you can exclude it
+#Note, you MUST specify the protocol (ftp, http, etc.) separately or `make` will break!
+gene_gtf_tuple=\
+	ftp$$ftp.ebi.ac.uk/path1/gencode.gz$$gencode$$20150330$$gencode \
+	ftp$$ftp.ebi.ac.uk/path2/ensembl.gz$$Ensembl$$release78 \
+	ftp$$ftp.ebi.ac.uk/path3/ucsc.gz$$UCSC$$mm10$$ucsc
+
+#This file contains the rules for obtaining/processing the genome
+#as well as creating bowtie2 HISAT indices
+include ../Makefile.inc
+
+#You can specify custom targets here. You must add rules for them!
+#An "OTHER:" line is required!
+OTHER:

@@ -1,0 +1,7 @@
+genome_url=ftp://ftp.ensembl.org/pub/release-78/fasta/drosophila_melanogaster/dna/Drosophila_melanogaster.BDGP5.dna_sm.toplevel.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.ensembl.org/pub/release-78/gtf/drosophila_melanogaster/Drosophila_melanogaster.BDGP5.78.gtf.gz$$Ensembl/release-78
+
+include ../Makefile.inc
+
+OTHER:
