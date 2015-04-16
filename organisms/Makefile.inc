@@ -1,9 +1,12 @@
-.PHONY: all
+.PHONY: all PERMS
 
 #THIS IS REQUIRED! Otherwise, GTF/BED files are deleted!
 .SECONDARY:
 
-all: GENOME GENOMEINDICES TRANSCRIPTOMES OTHER
+all: GENOME GENOMEINDICES TRANSCRIPTOMES OTHER PERMS
+
+PERMS:
+	../fixPerms.sh
 
 genome_fasta/genome.fa:
 	mkdir -p genome_fasta
