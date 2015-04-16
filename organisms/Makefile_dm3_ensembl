@@ -4,4 +4,14 @@ gene_gtf_tuple=\
 
 include ../Makefile.inc
 
-OTHER:
+ENCODE/DacMapabilityConsensusExcludable.bed:
+	mkdir -p ENCODE
+	chmod a+rx ENCODE
+	wget --quiet -O - http://www.broadinstitute.org/~anshul/projects/fly/blacklist/dm3-blacklist.bed.gz \
+	| zcat \
+	| ../convertChromosomes.py UCSC.map \
+	| ../addMissingContigs.py genome_fasta/genome.fa.fai \
+	| sort -k1,1 -k2,2n > $@
+	chmod a+r $@
+
+OTHER: ENCODE/DacMapabilityConsensusExcludable.bed
