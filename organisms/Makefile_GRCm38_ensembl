@@ -24,4 +24,8 @@ UCSC/mm10/rmsk.gtf:
 
 AnnotatedFeatures: ensembl/release-78/AnnotatedFeatures.gff ensembl/release-79/AnnotatedFeatures.gff
 
-OTHER: AnnotatedFeatures UCSC/mm10/rmsk.gtf
+blacklists/README:
+	mkdir -p blacklists
+	cp ENCODE/* blacklists/
+
+OTHER: AnnotatedFeatures UCSC/mm10/rmsk.gtf blacklists/README
