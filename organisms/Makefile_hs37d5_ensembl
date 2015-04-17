@@ -1,0 +1,11 @@
+genome_url=ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/phase2_reference_assembly_sequence/hs37d5.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_19/gencode.v19.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$release_19$$gencode.map
+
+include ../Makefile.inc
+
+ENCODE/hs37d5_extended_Encode-blacklist.bed:
+	mkdir -p ENCODE
+	cp /data/manke/group/arichter/annotations/blacklist_ENCODE/hs37d5_extended_Encode-blacklist.bed $@
+
+OTHER: ENCODE/hs37d5_extended_Encode-blacklist.bed
