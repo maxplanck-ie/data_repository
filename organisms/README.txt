@@ -27,4 +27,17 @@ For each annotation source that's been requested (e.g., UCSC, gencode, Ensembl),
   * tophat/tophat*.bt2 (the transcriptome index for use with tophat2)
 Other files may exist within these directories (e.g., repeatmasker tracks). If you would like an annotation added, please just ask. Note that coordinates and chromosome names within each of these directories will ALWAYS match the reference fasta file.
 
+Blacklists/mappability
+Note that there are blacklist files from the ENCODE project for GRCh37 and GRCm37 datasets. Likewise, there are mappability tracks using 50bp reads in bigwig format. These are all found under ENCODE/.
+
+Examples:
+
+Since indices for bowtie2, tophat2, and HISAT are provided, example usage of each are as follows (I assume the programs are in you $PATH):
+
+bowtie2 -p 12 -x /data/repository/organisms/GRCm38_ensembl/BowtieIndex/genome -1 /data/my_group/fastq1.fq.gz -2 /data/my_group/fastq2.fq.gz
+
+tophat -p 12 --transcriptome-index /data/repository/organisms/GRCm38_ensembl/ensembl/release-79/tophat/tophat /data/repository/organisms/GRCm38_ensembl/BowtieIndex/genome -1 /data/my_group/fastq1.fq.gz -2 /data/my_group/fastq2.fq.gz
+
+hisat -p 12 --known-splicesite-infile /data/repository/organisms/GRCm38_ensembl/ensembl/release-79/HISAT/splices.txt -x /data/repository/organisms/GRCm38_ensembl/HISATIndex/genome -1 /data/my_group/fastq1.fq.gz -2 /data/my_group/fastq2.fq.gz
+
 If you would like anything else added, please email Devon Ryan at ryan@ie-freiburg.mpg.de
