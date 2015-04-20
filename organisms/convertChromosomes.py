@@ -47,6 +47,8 @@ def main(args) :
             sys.stderr.write("%s\n" % line[args.colnum])
             lastKey = line[args.colnum]
             lastVal = mappings[line[args.colnum]]
+        if(lastVal == None) :
+            continue
         line[args.colnum] = lastVal
 
         for i in xrange(0,len(line)-1) :
