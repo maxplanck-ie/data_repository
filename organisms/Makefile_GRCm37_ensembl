@@ -15,4 +15,15 @@ ENCODE/DacMapabilityConsensusExcludable.bed:
 	| sort -k1,1 -k2,2n > $@
 	chmod a+r $@
 
-OTHER: ENCODE/DacMapabilityConsensusExcludable.bed
+#These can't take pipes!
+ENCODE/wgEncodeCrgMapabilityAlign50mer.bigWig: genome_fasta/genome.chrom.sizes
+	mkdir -p ENCODE
+	chmod a+rx ENCODE
+	wget --quiet -O - http://hgdownload.cse.ucsc.edu/goldenPath/mm9/encodeDCC/wgEncodeMapability/wgEncodeCrgMapabilityAlign50mer.bigWig > tmp
+	/package/UCSCtools/bigWigToBedGraph tmp /dev/stdout \
+	| ../convertChromosomes.py UCSC.map > tmp2
+	/package/UCSCtools/bedGraphToBigWig tmp2 genome_fasta/genome.chrom.sizes $@
+	chmod a+r $@
+	rm tmp tmp2
+
+OTHER: ENCODE/DacMapabilityConsensusExcludable.bed ENCODE/wgEncodeCrgMapabilityAlign50mer.bigWig

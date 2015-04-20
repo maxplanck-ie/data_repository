@@ -31,6 +31,8 @@ def makeMappings(fname) :
 def main(args) :
     mappings = makeMappings(args.mapFile)
     out = sys.stdout
+    lastKey = None
+    lastVal = None
     for line in csv.reader(sys.stdin, delimiter="\t", quoting=csv.QUOTE_NONE) :
         if line[0].startswith("#") :
             for i in xrange(0,len(line)-1) :
@@ -38,14 +40,18 @@ def main(args) :
             out.write("%s\n" % line[len(line)-1])
             continue
 
-        if line[args.colnum] not in mappings :
-            sys.stderr.write("%s not in mappings!\n" % line[args.colnum])
-        assert line[args.colnum] in mappings
-        if mappings[line[args.colnum]] :
-            line[args.colnum] = mappings[line[args.colnum]]
-            for i in xrange(0,len(line)-1) :
-                out.write("%s\t" % line[i])
-            out.write("%s\n" % line[len(line)-1])
+        if line[args.colnum] != lastKey:
+            if line[args.colnum] not in mappings :
+                sys.stderr.write("%s not in mappings!\n" % line[args.colnum])
+            assert line[args.colnum] in mappings
+            sys.stderr.write("%s\n" % line[args.colnum])
+            lastKey = line[args.colnum]
+            lastVal = mappings[line[args.colnum]]
+        line[args.colnum] = lastVal
+
+        for i in xrange(0,len(line)-1) :
+            out.write("%s\t" % line[i])
+        out.write("%s\n" % line[len(line)-1])
 
 if __name__ == "__main__" :
     args = parseArguments()
