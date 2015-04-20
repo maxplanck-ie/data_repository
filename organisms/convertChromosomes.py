@@ -44,7 +44,6 @@ def main(args) :
             if line[args.colnum] not in mappings :
                 sys.stderr.write("%s not in mappings!\n" % line[args.colnum])
             assert line[args.colnum] in mappings
-            sys.stderr.write("%s\n" % line[args.colnum])
             lastKey = line[args.colnum]
             lastVal = mappings[line[args.colnum]]
         if(lastVal == None) :
