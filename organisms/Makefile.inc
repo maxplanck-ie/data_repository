@@ -58,6 +58,12 @@ endif
 	| /package/UCSCtools/gtfToGenePred /dev/stdin /dev/stdout \
 	| /package/UCSCtools/genePredToBed stdin $@
 
+%transcript2gene.txt:
+	awk '{if ($$3 != "gene") print $$0;}' $(dir $@)genes.gtf \
+	| grep -v "^#" \
+	| /package/UCSCtools/gtfToGenePred -genePredExt /dev/stdin /dev/stdout \
+	| cut -f 1,12 > $(dir $@)transcript2gene.txt
+
 #Note, the `ln` line prevents tophat from duplicating the genome fasta
 #Bowtie2 uses the same indices as HISAT
 BowtieIndex/genome.rev.2.bt2: HISATIndex/genome.rev.2.bt2
@@ -97,6 +103,7 @@ $(gene_gtf_tuple)::
 	$(eval VERSION = $(word 4,$(subst $$, ,$@)))
 	$(eval CONV = $(word 5,$(subst $$, ,$@)))
 	mkdir -p $(SOURCE)/$(VERSION)
+	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/transcript2gene.txt
 	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/genes.bed
 	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/tophat/tophat.rev.2.bt2
 	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/HISAT/splices.txt
