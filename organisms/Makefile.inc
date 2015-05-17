@@ -92,8 +92,13 @@ HISATIndex/genome.rev.2.bt2: genome_fasta/genome.fa
 	mkdir -p HISATIndex
 	/package/hisat-0.1.5-beta/bin/hisat-build -q genome_fasta/genome.fa HISATIndex/genome
 
+BWAindex/genome.fa.sa: genome_fasta/genome.fa
+	mkdir -p BWAindex
+	/package/bwa-0.7.4/bwa index genome_fasta/genome.fa
+	mv genome_fasta/genome.fa.* BWAindex/
+
 #All genome aligner indices are prerequisites
-GENOMEINDICES: HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2
+GENOMEINDICES: HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa
 
 #Attempt making the transcriptome construction parallel
 $(gene_gtf_tuple)::
