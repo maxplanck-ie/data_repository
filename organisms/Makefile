@@ -6,6 +6,7 @@ repos=\
     GRCh38_ensembl \
     GRCm37_ensembl \
     GRCm38_ensembl \
+    GRCz10_ensembl \
     hs37d5_ensembl \
     Zv9_ensembl
 
