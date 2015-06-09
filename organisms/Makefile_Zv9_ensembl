@@ -4,4 +4,10 @@ gene_gtf_tuple=\
 
 include ../Makefile.inc
 
-OTHER:
+UCSC/danRer7/rmsk.txt:
+	mkdir -p $(dir $@)
+	mysql --user=genome --host=genome-mysql.cse.ucsc.edu -D danRer7 -e "select * from rmsk" \
+	    | sed -e "s/\|//g" -e "s/^bin/#bin/" \
+	    | ../convertChromosomes.py -n 6 UCSC.map > $@
+
+OTHER: UCSC/danRer7/rmsk.txt

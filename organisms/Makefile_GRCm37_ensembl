@@ -26,4 +26,10 @@ ENCODE/wgEncodeCrgMapabilityAlign50mer.bigWig: genome_fasta/genome.chrom.sizes
 	chmod a+r $@
 	rm tmp tmp2
 
-OTHER: ENCODE/DacMapabilityConsensusExcludable.bed ENCODE/wgEncodeCrgMapabilityAlign50mer.bigWig
+#This isn't in the mysql database
+UCSC/mm9/rmsk.txt:
+	mkdir -p $(dir $@)
+	zcat ~/Downloads/mm9.rmsk.gz \
+	    | ../convertChromosomes.py -n 6 UCSC.map > $@
+
+OTHER: ENCODE/DacMapabilityConsensusExcludable.bed ENCODE/wgEncodeCrgMapabilityAlign50mer.bigWig UCSC/mm9/rmsk.txt

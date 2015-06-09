@@ -14,4 +14,10 @@ ENCODE/DacMapabilityConsensusExcludable.bed:
 	| sort -k1,1 -k2,2n > $@
 	chmod a+r $@
 
-OTHER: ENCODE/DacMapabilityConsensusExcludable.bed
+#This doesn't exist in the database or DAS, but seems to be in the table browser...
+UCSC/dm3/rmsk.txt:
+	mkdir -p $(dir $@)
+	zcat /home/ryan/Downloads/dm3.rmsk.gz \
+	    | ../convertChromosomes.py -n 6 UCSC.map > $@
+
+OTHER: ENCODE/DacMapabilityConsensusExcludable.bed UCSC/dm3/rmsk.txt

@@ -22,10 +22,16 @@ UCSC/mm10/rmsk.gtf:
 	    | awk '{printf "%s\trmsk\texon\t%i\t%i\t%f\t%c\t.\tgene_id \"%s/%s\"; transcript_id \"%s\";\n",$$6,$$7+1,$$8,$$2,$$10,$$13,$$12,$$11}' \
 	    | ../convertChromosomes.py UCSC.map > $@
 
+UCSC/mm10/rmsk.txt:
+	mkdir -p $(dir $@)
+	mysql --user=genome --host=genome-mysql.cse.ucsc.edu -D mm10 -e "select * from rmsk" \
+	    | sed -e "s/\|//g" -e "s/^bin/#bin/" \
+	    | ../convertChromosomes.py -n 6 UCSC.map > $@
+
 AnnotatedFeatures: ensembl/release-78/AnnotatedFeatures.gff ensembl/release-79/AnnotatedFeatures.gff
 
 DKFZ/README:
 	mkdir -p DKFZ
 	cp /data/manke/group/arichter/annotations/blacklist_mm10_DKFZ/* DKFZ/
 
-OTHER: AnnotatedFeatures UCSC/mm10/rmsk.gtf DKFZ/README
+OTHER: AnnotatedFeatures UCSC/mm10/rmsk.gtf DKFZ/README UCSC/mm10/rmsk.txt
