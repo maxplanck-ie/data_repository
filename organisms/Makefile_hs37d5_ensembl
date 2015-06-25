@@ -8,4 +8,10 @@ ENCODE/hs37d5_extended_Encode-blacklist.bed:
 	mkdir -p ENCODE
 	cp /data/manke/group/arichter/annotations/blacklist_ENCODE/hs37d5_extended_Encode-blacklist.bed $@
 
-OTHER: ENCODE/hs37d5_extended_Encode-blacklist.bed
+UCSC/hg19/rmsk.txt:
+	mkdir -p $(dir $@)
+	mysql --user=genome --host=genome-mysql.cse.ucsc.edu -D hg19 -e "select * from rmsk" \
+	    | sed -e "s/\|//g" -e "s/^bin/#bin/" \
+	    | ../convertChromosomes.py -n 6 UCSC.map > $@
+
+OTHER: ENCODE/hs37d5_extended_Encode-blacklist.bed UCSC/hg19/rmsk.txt

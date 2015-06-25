@@ -1,5 +1,6 @@
 genome_url=ftp://ftp.ensembl.org/pub/release-78/fasta/mus_musculus/dna/Mus_musculus.GRCm38.dna_sm.primary_assembly.fa.gz
 gene_gtf_tuple=\
+        ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M5/gencode.vM5.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$m5$$gencode.map \
 	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M4/gencode.vM4.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$m4$$gencode.map \
 	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M3/gencode.vM3.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$m3$$gencode.map \
 	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M2/gencode.vM2.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$m2$$gencode.map \
