@@ -104,8 +104,12 @@ BWAindex/genome.fa.sa: genome_fasta/genome.fa
 	/package/bwa-0.7.4/bwa index genome_fasta/genome.fa
 	mv genome_fasta/genome.fa.* BWAindex/
 
+STAR/SAindex:	genome_fasta/genome.fa
+	mkdir -p STAR
+	/package/STAR-2.4.2a/bin/STAR --runThreadN 10 --runMode genomeGenerate --genomeDir STAR --genomeFastaFiles genome_fasta/genome.fa
+
 #All genome aligner indices are prerequisites
-GENOMEINDICES: HISAT2Index/genome.8.ht2 HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa
+GENOMEINDICES: HISAT2Index/genome.8.ht2 HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa STAR/SAindex
 
 #Attempt making the transcriptome construction parallel
 $(gene_gtf_tuple)::
