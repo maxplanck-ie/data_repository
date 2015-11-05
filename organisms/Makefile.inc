@@ -84,9 +84,16 @@ BowtieIndex/genome.rev.2.bt2: HISATIndex/genome.rev.2.bt2
 	/package/tophat-2.0.13.Linux_x86_64/tophat --GTF genes.gtf --transcriptome-index tophat/tophat ../../BowtieIndex/genome
 	rm -rf $(DIR)/tophat_out
 
-%splices.txt:
+%HISAT2/splices.txt:
 	mkdir -p $(DIR)/HISAT
 	~/bin/extract_splice_sites.py $(DIR)/genes.gtf > $(DIR)/HISAT/splices.txt
+	mkdir -p $(DIR)/HISAT2
+	/package/hisat2-2.0.0-beta/extract_exons.py $(DIR)/genes.gtf > $(DIR)/HISAT2/exons.txt
+	/package/hisat2-2.0.0-beta/extract_splice_sites.py $(DIR)/genes.gtf > $(DIR)/HISAT2/splice_sites.txt
+
+HISAT2Index/genome.8.ht2: genome_fasta/genome.fa
+	mkdir -p HISAT2Index
+	/package/hisat2-2.0.0-beta/hisat2-build -q -p 10 genome_fasta/genome.fa HISAT2Index/genome
 
 HISATIndex/genome.rev.2.bt2: genome_fasta/genome.fa
 	mkdir -p HISATIndex
@@ -98,7 +105,7 @@ BWAindex/genome.fa.sa: genome_fasta/genome.fa
 	mv genome_fasta/genome.fa.* BWAindex/
 
 #All genome aligner indices are prerequisites
-GENOMEINDICES: HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa
+GENOMEINDICES: HISAT2Index/genome.8.ht2 HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa
 
 #Attempt making the transcriptome construction parallel
 $(gene_gtf_tuple)::
@@ -112,6 +119,7 @@ $(gene_gtf_tuple)::
 	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/genes.bed
 	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/tophat/tophat.rev.2.bt2
 	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/HISAT/splices.txt
+	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/HISAT2/splices.txt
 
 #All transcriptome GTF/BED file and indices for alignments to them (e.g., tophat2)
 #Note, these can't be run in parallel, since tophat will clash with itself
