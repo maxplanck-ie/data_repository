@@ -1,0 +1,7 @@
+genome_url=ftp://ftp.ensemblgenomes.org/pub/release-30/metazoa/fasta/drosophila_virilis/dna/Drosophila_virilis.GCA_000005245.1.30.dna.toplevel.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.ensemblgenomes.org/pub/release-30/metazoa/gtf/drosophila_virilis/Drosophila_virilis.GCA_000005245.1.30.gtf.gz$$Ensembl$$release-30
+
+include ../Makefile.inc
+
+OTHER:

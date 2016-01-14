@@ -8,7 +8,8 @@ repos=\
     GRCm38_ensembl \
     GRCz10_ensembl \
     hs37d5_ensembl \
-    Zv9_ensembl
+    Zv9_ensembl \
+    dvir1.3_ensembl
 
 .PHONY: all
 
