@@ -122,7 +122,6 @@ $(gene_gtf_tuple)::
 	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/transcript2gene.txt
 	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/genes.bed
 	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/tophat/tophat.rev.2.bt2
-	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/HISAT/splices.txt
 	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/HISAT2/splices.txt
 
 #All transcriptome GTF/BED file and indices for alignments to them (e.g., tophat2)
