@@ -97,7 +97,7 @@ HISAT2Index/genome.8.ht2: genome_fasta/genome.fa
 
 HISATIndex/genome.rev.2.bt2: genome_fasta/genome.fa
 	mkdir -p HISATIndex
-	/package/hisat-0.1.5-beta/bin/hisat-build -q genome_fasta/genome.fa HISATIndex/genome
+	/package/hisat-0.1.6-beta/bin/hisat-build -q genome_fasta/genome.fa HISATIndex/genome
 
 BWAindex/genome.fa.sa: genome_fasta/genome.fa
 	mkdir -p BWAindex
@@ -119,8 +119,8 @@ $(gene_gtf_tuple)::
 	$(eval VERSION = $(word 4,$(subst $$, ,$@)))
 	$(eval CONV = $(word 5,$(subst $$, ,$@)))
 	mkdir -p $(SOURCE)/$(VERSION)
-	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/transcript2gene.txt
 	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/genes.bed
+	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/transcript2gene.txt
 	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/tophat/tophat.rev.2.bt2
 	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/HISAT2/splices.txt
 

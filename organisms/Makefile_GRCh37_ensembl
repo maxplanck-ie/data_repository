@@ -1,7 +1,7 @@
 genome_url=ftp://ftp.ensembl.org/pub/release-75/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.75.dna_sm.primary_assembly.fa.gz
 gene_gtf_tuple=\
 	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_19/gencode.v19.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$release_19$$gencode.map \
-	ftp$$ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gtf.gz$$Ensembl$$release-78
+	ftp$$ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gtf.gz$$Ensembl$$release-75
 
 include ../Makefile.inc
 
