@@ -108,8 +108,14 @@ STARIndex/SAindex:	genome_fasta/genome.fa
 	mkdir -p STARIndex
 	/package/STAR-2.4.2a/bin/STAR --runThreadN 10 --runMode genomeGenerate --genomeDir STARIndex --genomeFastaFiles genome_fasta/genome.fa
 
+BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2:	genome_fasta/genome.fa
+	mkdir -p BismarkIndex
+	ln -s ../genome_fasta/genome.fa BismarkIndex/genome.fa
+	module load bismark
+	bismark_genome_preparation BismarkIndex/
+
 #All genome aligner indices are prerequisites
-GENOMEINDICES: HISAT2Index/genome.8.ht2 HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa STARIndex/SAindex
+GENOMEINDICES: HISAT2Index/genome.8.ht2 HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa STARIndex/SAindex BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2
 
 #Attempt making the transcriptome construction parallel
 $(gene_gtf_tuple)::
