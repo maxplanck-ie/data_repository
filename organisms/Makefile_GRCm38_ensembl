@@ -32,10 +32,20 @@ UCSC/mm10/rmsk.txt:
 	    | sed -e "s/\|//g" -e "s/^bin/#bin/" \
 	    | ../convertChromosomes.py -n 6 UCSC.map > $@
 
+akundaje/blacklist.bed:
+	mkdir -p akundaje
+	chmod a+rx akundaje
+	wget --quiet -O - http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/mm10-mouse/mm10.blacklist.bed.gz \
+	| zcat \
+	| ../convertChromosomes.py UCSC.map \
+	| ../addMissingContigs.py genome_fasta/genome.fa.fai \
+	| sort -k1,1 -k2,2n > $@
+	chmod a+r $@
+
 AnnotatedFeatures: ensembl/release-78/AnnotatedFeatures.gff ensembl/release-79/AnnotatedFeatures.gff
 
 DKFZ/README:
 	mkdir -p DKFZ
 	cp /data/manke/group/arichter/annotations/blacklist_mm10_DKFZ/* DKFZ/
 
-OTHER: AnnotatedFeatures UCSC/mm10/rmsk.gtf DKFZ/README UCSC/mm10/rmsk.txt
+OTHER: AnnotatedFeatures UCSC/mm10/rmsk.gtf DKFZ/README UCSC/mm10/rmsk.txt akundaje/blacklist.bed
