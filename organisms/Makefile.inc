@@ -111,7 +111,7 @@ STARIndex/SAindex:	genome_fasta/genome.fa
 BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2:	genome_fasta/genome.fa
 	mkdir -p BismarkIndex
 	ln -s ../genome_fasta/genome.fa BismarkIndex/genome.fa
-	bismark_genome_preparation --path_to_bowtie /package/bowtie2-2.2.3/bin BismarkIndex/
+	/package/bismark-0.16.3/bismark_genome_preparation --path_to_bowtie /package/bowtie2-2.2.3/bin BismarkIndex/
 
 #All genome aligner indices are prerequisites
 GENOMEINDICES: HISAT2Index/genome.8.ht2 HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa STARIndex/SAindex BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2
