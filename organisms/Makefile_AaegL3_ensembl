@@ -1,0 +1,7 @@
+genome_url=ftp://ftp.ensemblgenomes.org/pub/metazoa/release-34/fasta/aedes_aegypti/dna/Aedes_aegypti.AaegL3.dna.toplevel.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.ensemblgenomes.org/pub/metazoa/release-34/gtf/aedes_aegypti/Aedes_aegypti.AaegL3.34.gtf.gz$$Ensembl$release-34
+
+include ../Makefile.inc
+
+OTHER:

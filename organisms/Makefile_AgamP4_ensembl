@@ -1,0 +1,7 @@
+genome_url=ftp://ftp.ensemblgenomes.org/pub/metazoa/release-34/fasta/anopheles_gambiae/dna/Anopheles_gambiae.AgamP4.dna.toplevel.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.ensemblgenomes.org/pub/metazoa/release-34/gtf/anopheles_gambiae/Anopheles_gambiae.AgamP4.34.gtf.gz$$Ensembl$$release-30
+
+include ../Makefile.inc
+
+OTHER:
