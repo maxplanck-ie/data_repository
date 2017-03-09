@@ -26,3 +26,9 @@ liftOver/dm3ToDm6.over.chain.gz: liftOver
 
 liftOver/dm6ToDm3.over.chain.gz: liftOver
 	wget --quiet -P liftOver http://hgdownload.soe.ucsc.edu/goldenPath/dm6/liftOver/dm6ToDm3.over.chain.gz
+
+liftOver/mm10ToMm9.over.chain.gz: liftOver
+	wget --quiet -P liftOver http://hgdownload.soe.ucsc.edu/goldenPath/mm10/liftOver/mm10ToMm9.over.chain.gz
+
+liftOver/mm9ToMm10.over.chain.gz: liftOver
+	wget --quiet -P liftOver http://hgdownload.soe.ucsc.edu/goldenPath/mm9/liftOver/mm9ToMm10.over.chain.gz

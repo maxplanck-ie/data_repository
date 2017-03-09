@@ -85,11 +85,11 @@ BowtieIndex/genome.rev.2.bt2: HISATIndex/genome.rev.2.bt2
 	rm -rf $(DIR)/tophat_out
 
 %HISAT2/splices.txt:
-	mkdir -p $(DIR)/HISAT
-	~/bin/extract_splice_sites.py $(DIR)/genes.gtf > $(DIR)/HISAT/splices.txt
-	mkdir -p $(DIR)/HISAT2
-	/package/hisat2-2.0.0-beta/extract_exons.py $(DIR)/genes.gtf > $(DIR)/HISAT2/exons.txt
-	/package/hisat2-2.0.0-beta/extract_splice_sites.py $(DIR)/genes.gtf > $(DIR)/HISAT2/splice_sites.txt
+	mkdir -p $(DIR)HISAT
+	~/bin/extract_splice_sites.py $(DIR)genes.gtf > $(DIR)HISAT/splices.txt
+	mkdir -p $(DIR)HISAT2
+	/package/hisat2-2.0.0-beta/extract_exons.py $(DIR)genes.gtf > $(DIR)HISAT2/exons.txt
+	/package/hisat2-2.0.0-beta/extract_splice_sites.py $(DIR)genes.gtf > $(DIR)HISAT2/splice_sites.txt
 
 HISAT2Index/genome.8.ht2: genome_fasta/genome.fa
 	mkdir -p HISAT2Index
@@ -113,8 +113,18 @@ BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2:	genome_fasta/genome.fa
 	ln -s ../genome_fasta/genome.fa BismarkIndex/genome.fa
 	/package/bismark-0.16.3/bismark_genome_preparation --path_to_bowtie /package/bowtie2-2.2.3/bin BismarkIndex/
 
+NovoalignIndex/genome:	genome_fasta/genome.fa
+	mkdir -p NovoalignIndex
+	ln -s ../genome_fasta/genome.fa NovoalignIndex/genome.fa
+	/package/novoalign-3.07.00/novoindex NovoalignIndex/genome NovoalignIndex/genome.fa
+
+NovoalignMethylIndex/genome:	genome_fasta/genome.fa
+	mkdir -p NovoalignMethylIndex
+	ln -s ../genome_fasta/genome.fa NovoalignMethylIndex/genome.fa
+	/package/novoalign-3.07.00/novoindex -b NovoalignMethylIndex/genome NovoalignMethylIndex/genome.fa
+
 #All genome aligner indices are prerequisites
-GENOMEINDICES: HISAT2Index/genome.8.ht2 HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa STARIndex/SAindex BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2
+GENOMEINDICES: HISAT2Index/genome.8.ht2 HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa STARIndex/SAindex BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2 NovoalignIndex/genome NovoalignMethylIndex/genome
 
 #Attempt making the transcriptome construction parallel
 $(gene_gtf_tuple)::
@@ -124,10 +134,10 @@ $(gene_gtf_tuple)::
 	$(eval VERSION = $(word 4,$(subst $$, ,$@)))
 	$(eval CONV = $(word 5,$(subst $$, ,$@)))
 	mkdir -p $(SOURCE)/$(VERSION)
-	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/genes.bed
-	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/transcript2gene.txt
-	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/tophat/tophat.rev.2.bt2
-	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/HISAT2/splices.txt
+	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)genes.bed
+	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)transcript2gene.txt
+	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)tophat/tophat.rev.2.bt2
+	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)HISAT2/splices.txt
 
 #All transcriptome GTF/BED file and indices for alignments to them (e.g., tophat2)
 #Note, these can't be run in parallel, since tophat will clash with itself
