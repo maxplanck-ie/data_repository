@@ -1,7 +1,8 @@
 genome_url=ftp://ftp.ensembl.org/pub/release-80/fasta/danio_rerio/dna/Danio_rerio.GRCz10.dna.toplevel.fa.gz
 gene_gtf_tuple=\
 	ftp$$ftp.ensembl.org/pub/release-80/gtf/danio_rerio/Danio_rerio.GRCz10.80.gtf.gz$$ensembl$$release-80 \
-	ftp$$ftp.ensembl.org/pub/release-83/gtf/danio_rerio/Danio_rerio.GRCz10.83.gtf.gz$$ensembl$$release-83
+	ftp$$ftp.ensembl.org/pub/release-83/gtf/danio_rerio/Danio_rerio.GRCz10.83.gtf.gz$$ensembl$$release-83 \
+	ftp$$ftp.ensembl.org/pub/release-88/gtf/danio_rerio/Danio_rerio.GRCz10.88.gtf.gz$$ensembl$$release-88
 
 include ../Makefile.inc
 
