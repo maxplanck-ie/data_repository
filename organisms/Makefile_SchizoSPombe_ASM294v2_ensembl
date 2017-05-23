@@ -1,0 +1,7 @@
+genome_url=ftp://ftp.ensemblgenomes.org/pub/release-35/fungi/fasta/schizosaccharomyces_pombe/dna/Schizosaccharomyces_pombe.ASM294v2.dna_sm.toplevel.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.ensemblgenomes.org/pub/release-35/fungi/gtf/schizosaccharomyces_pombe/Schizosaccharomyces_pombe.ASM294v2.35.gtf.gz$$Ensembl$$release-35
+
+include ../Makefile.inc
+
+OTHER:
