@@ -1,0 +1,7 @@
+genome_url="ftp://ftp.ensemblgenomes.org/pub/release-35/metazoa/fasta/strongylocentrotus_purpuratus/dna/Strongylocentrotus_purpuratus.GCA_000002235.2.dna_sm.toplevel.fa.gz"
+gene_gtf_tuple=\
+	ftp$$ftp.ensemblgenomes.org/pub/release-35/metazoa/gtf/strongylocentrotus_purpuratus/Strongylocentrotus_purpuratus.GCA_000002235.2.35.gtf.gz$$Ensembl$$release-35
+
+include ../Makefile.inc
+
+OTHER:

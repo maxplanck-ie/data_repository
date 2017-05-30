@@ -1,0 +1,7 @@
+genome_url="ftp://ftp.ensemblgenomes.org/pub/release-35/metazoa/fasta/crassostrea_gigas/dna/Crassostrea_gigas.GCA_000297895.1.dna_sm.toplevel.fa.gz"
+gene_gtf_tuple=\
+	ftp$$ftp.ensemblgenomes.org/pub/release-35/metazoa/gtf/crassostrea_gigas/Crassostrea_gigas.GCA_000297895.1.35.gtf.gz$$Ensembl$$release-35
+
+include ../Makefile.inc
+
+OTHER:

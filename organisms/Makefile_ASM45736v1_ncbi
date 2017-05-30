@@ -1,0 +1,7 @@
+genome_url="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/457/365/GCF_000457365.1_ASM45736v1/GCF_000457365.1_ASM45736v1_genomic.fna.gz"
+gene_gtf_tuple=\
+	ftp$$ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/457/365/GCF_000457365.1_ASM45736v1/GCF_000457365.1_ASM45736v1_genomic.gff.gz$$NCBI$$300517
+
+include ../Makefile.inc
+
+OTHER:

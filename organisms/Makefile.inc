@@ -107,6 +107,7 @@ BWAindex/genome.fa.sa: genome_fasta/genome.fa
 STARIndex/SAindex:	genome_fasta/genome.fa
 	mkdir -p STARIndex
 	/package/STAR-2.4.2a/bin/STAR --runThreadN 10 --runMode genomeGenerate --genomeDir STARIndex --genomeFastaFiles genome_fasta/genome.fa
+	rm -f Log.out
 
 BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2:	genome_fasta/genome.fa
 	mkdir -p BismarkIndex
