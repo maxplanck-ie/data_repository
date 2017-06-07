@@ -1,0 +1,7 @@
+genome_url="ftp://ftp.ensemblgenomes.org/pub/release-32/bacteria//fasta/bacteria_0_collection/wolbachia_endosymbiont_of_drosophila_melanogaster/dna/Wolbachia_endosymbiont_of_drosophila_melanogaster.ASM802v1.dna_sm.toplevel.fa.gz"
+gene_gtf_tuple=\
+	ftp$$ftp.ensemblgenomes.org/pub/release-32/bacteria//gtf/bacteria_0_collection/wolbachia_endosymbiont_of_drosophila_melanogaster/Wolbachia_endosymbiont_of_drosophila_melanogaster.ASM802v1.32.gtf.gz$$Ensembl$$release-32
+
+include ../Makefile.inc
+
+OTHER:
