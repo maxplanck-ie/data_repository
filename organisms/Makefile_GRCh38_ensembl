@@ -12,7 +12,6 @@ akundaje/blacklist.bed:
 	wget --quiet -O - http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/hg38-human/hg38.blacklist.bed.gz \
 	| zcat \
 	| ../convertChromosomes.py UCSC.map \
-	| ../addMissingContigs.py genome_fasta/genome.fa.fai \
 	| sort -k1,1 -k2,2n > $@
 	chmod a+r $@
 
