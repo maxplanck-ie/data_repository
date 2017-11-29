@@ -1,0 +1,7 @@
+genome_url=ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE69nnn/GSE69208/suppl/GSE69208_Dbus_genome_assembly.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.ncbi.nlm.nih.gov/geo/series/GSE69nnn/GSE69208/suppl/GSE69208_Dbus_protein_annotation.bed.gz$$quinn$$published
+
+include ../Makefile.inc
+
+OTHER:
