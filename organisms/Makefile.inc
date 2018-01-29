@@ -58,6 +58,10 @@ endif
 	| /package/UCSCtools/gtfToGenePred /dev/stdin /dev/stdout \
 	| /package/UCSCtools/genePredToBed stdin $@
 
+%.slop.gtf: %.gtf
+	grep -v "^#" $< \
+	| awk 'BEGIN{OFS="\t"}{if($$3 == "gene" || $$3 == "transcript") {$$4 -= 500; $$5 += 500; if($$4 < 1) {$$4 = 1}; print}}' > $@
+
 %transcript2gene.txt:
 	awk '{if ($$3 != "gene") print $$0;}' $(dir $@)genes.gtf \
 	| grep -v "^#" \
@@ -135,6 +139,7 @@ $(gene_gtf_tuple)::
 	$(eval VERSION = $(word 4,$(subst $$, ,$@)))
 	$(eval CONV = $(word 5,$(subst $$, ,$@)))
 	mkdir -p $(SOURCE)/$(VERSION)
+	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/genes.slop.gtf
 	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/genes.bed
 	$(MAKE) URL=$(URL) PROT=$(PROT) CONV=$(CONV) $(SOURCE)/$(VERSION)/transcript2gene.txt
 	$(MAKE) DIR=$(SOURCE)/$(VERSION) $(SOURCE)/$(VERSION)/tophat/tophat.rev.2.bt2
