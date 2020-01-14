@@ -11,6 +11,7 @@ repos=\
     GRCm38_ensembl \
     GRCz10_ensembl \
     hs37d5_ensembl \
+    WBcel235_ensembl \
     Zv9_ensembl 
 
 .PHONY: all

@@ -1,0 +1,8 @@
+genome_url="ftp://ftp.ensembl.org/pub/release-91/fasta/caenorhabditis_elegans/dna/Caenorhabditis_elegans.WBcel235.dna_sm.toplevel.fa.gz"
+
+gene_gtf_tuple=\
+	ftp$$ftp.ensembl.org/pub/release-91/gtf/caenorhabditis_elegans/Caenorhabditis_elegans.WBcel235.91.gtf.gz$$Ensembl$$release-91
+
+include ../Makefile.inc
+
+OTHER:

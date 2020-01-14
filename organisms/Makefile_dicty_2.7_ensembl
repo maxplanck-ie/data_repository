@@ -1,0 +1,7 @@
+genome_url=ftp://ftp.ensemblgenomes.org/pub/release-38/protists/fasta/dictyostelium_discoideum/dna/Dictyostelium_discoideum.dicty_2.7.dna_sm.toplevel.fa.gz
+gene_gtf_tuple=\
+	ftp$$ftp.ensemblgenomes.org/pub/release-38/protists/gtf/dictyostelium_discoideum/Dictyostelium_discoideum.dicty_2.7.38.gtf.gz$$Ensembl$$release-38
+
+include ../Makefile.inc
+
+OTHER:

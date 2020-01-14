@@ -1,6 +1,9 @@
 genome_url=ftp://ftp.ensembl.org/pub/release-79/fasta/drosophila_melanogaster/dna/Drosophila_melanogaster.BDGP6.dna_sm.toplevel.fa.gz
 gene_gtf_tuple=\
-	ftp$$ftp.ensembl.org/pub/release-79/gtf/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.79.gtf.gz$$Ensembl$$release-79
+	ftp$$ftp.ensembl.org/pub/release-79/gtf/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.79.gtf.gz$$Ensembl$$release-79 \
+	ftp$$ftp.ensembl.org/pub/release-91/gtf/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.91.gtf.gz$$Ensembl$$release-91 \
+	ftp$$ftp.ensembl.org/pub/release-93/gtf/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.93.gtf.gz$$Ensembl$$release-93 \
+	ftp$$ftp.ensembl.org/pub/release-96/gtf/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.22.96.gtf.gz$$Ensembl$$release-96
 
 include ../Makefile.inc
 

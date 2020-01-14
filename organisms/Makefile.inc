@@ -60,7 +60,7 @@ endif
 
 %.slop.gtf: %.gtf
 	grep -v "^#" $< \
-	| awk 'BEGIN{OFS="\t"}{if($$3 == "gene" || $$3 == "transcript") {$$4 -= 500; $$5 += 500; if($$4 < 1) {$$4 = 1}; print}}' > $@
+	| awk 'BEGIN{FS="\t"; OFS="\t"}{if($$3 == "gene" || $$3 == "transcript") {$$4 -= 500; $$5 += 500; if($$4 < 1) {$$4 = 1}; print}}' > $@
 
 %transcript2gene.txt:
 	awk '{if ($$3 != "gene") print $$0;}' $(dir $@)genes.gtf \

@@ -1,5 +1,6 @@
 genome_url=ftp://ftp.ensembl.org/pub/release-78/fasta/mus_musculus/dna/Mus_musculus.GRCm38.dna_sm.primary_assembly.fa.gz
 gene_gtf_tuple=\
+	ftp$$ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M19/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$m19$$gencode.map \
 	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M11/gencode.vM11.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$m11$$gencode.map \
 	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M9/gencode.vM9.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$m9$$gencode.map \
 	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M8/gencode.vM8.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$m8$$gencode.map \
@@ -11,6 +12,7 @@ gene_gtf_tuple=\
 	ftp$$ftp.ensembl.org/pub/release-79/gtf/mus_musculus/Mus_musculus.GRCm38.79.gtf.gz$$ensembl$$release-79 \
 	ftp$$ftp.ensembl.org/pub/release-78/gtf/mus_musculus/Mus_musculus.GRCm38.78.gtf.gz$$ensembl$$release-78 \
 	ftp$$ftp.ensembl.org/pub/release-88/gtf/mus_musculus/Mus_musculus.GRCm38.88.gtf.gz$$ensembl$$release-88 \
+	ftp$$ftp.ensembl.org/pub/release-91/gtf/mus_musculus/Mus_musculus.GRCm38.91.gtf.gz$$ensembl$$release-91 \
 	ftp$$ftp.sanger.ac.uk/pub/gencode/Gencode_mouse/release_M13/gencode.vM13.chr_patch_hapl_scaff.annotation.gtf.gz$$gencode$$m13$$gencode.map \
 	genePred$$hgdownload.cse.ucsc.edu/goldenPath/mm10/database/refGene.txt.gz$$UCSC$$mm10$$UCSC.map
 

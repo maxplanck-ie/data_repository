@@ -1,0 +1,7 @@
+genome_url=ftp://ftp.flybase.net/genomes/Drosophila_melanogaster/dmel_r6.12_FB2016_04/fasta/dmel-all-chromosome-r6.12.fasta.gz
+gene_gtf_tuple=\
+	ftp$$ftp.flybase.net/genomes/Drosophila_melanogaster/dmel_r6.12_FB2016_04/gtf/dmel-all-r6.12.gtf.gz$$flybase$$r6.12
+
+include ../Makefile.inc
+
+OTHER:
