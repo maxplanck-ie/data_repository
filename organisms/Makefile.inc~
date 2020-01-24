@@ -134,7 +134,7 @@ NovoalignMethylIndex/genome:	genome_fasta/genome.fa
 	/package/novoalign-3.07.00/novoindex -b NovoalignMethylIndex/genome NovoalignMethylIndex/genome.fa
 
 #All genome aligner indices are prerequisites
-GENOMEINDICES: HISAT2Index/genome.8.ht2 HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa STARIndex/2.4.2a/SAindex STARIndex/2.7.3a/SAindex BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2 NovoalignIndex/genome NovoalignMethylIndex/genome
+GENOMEINDICES: HISAT2Index/genome.8.ht2 HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa STARIndex/SAindex BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2 NovoalignIndex/genome NovoalignMethylIndex/genome
 
 #Attempt making the transcriptome construction parallel
 $(gene_gtf_tuple)::
