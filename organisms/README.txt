@@ -40,4 +40,4 @@ tophat -p 12 --transcriptome-index /data/repository/organisms/GRCm38_ensembl/ens
 
 hisat -p 12 --known-splicesite-infile /data/repository/organisms/GRCm38_ensembl/ensembl/release-79/HISAT/splices.txt -x /data/repository/organisms/GRCm38_ensembl/HISATIndex/genome -1 /data/my_group/fastq1.fq.gz -2 /data/my_group/fastq2.fq.gz
 
-If you would like anything else added, please email Devon Ryan at ryan@ie-freiburg.mpg.de
+If you would like anything else added, please email bioinfo-core@ie-freiburg.mpg.de
