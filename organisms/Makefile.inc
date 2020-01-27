@@ -90,7 +90,7 @@ BowtieIndex/genome.rev.2.bt2: HISATIndex/genome.rev.2.bt2
 
 %HISAT2/splices.txt:
 	mkdir -p $(DIR)/HISAT
-	~/bin/extract_splice_sites.py $(DIR)/genes.gtf > $(DIR)/HISAT/splices.txt
+	/package/hisat/bin/extract_splice_sites.py $(DIR)/genes.gtf > $(DIR)/HISAT/splices.txt
 	mkdir -p $(DIR)/HISAT2
 	/package/hisat2-2.0.0-beta/extract_exons.py $(DIR)/genes.gtf > $(DIR)/HISAT2/exons.txt
 	/package/hisat2-2.0.0-beta/extract_splice_sites.py $(DIR)/genes.gtf > $(DIR)/HISAT2/splice_sites.txt
@@ -115,7 +115,7 @@ STARIndex/SAindex:	genome_fasta/genome.fa
 
 STARIndex/2.7.1a/SAindex:	genome_fasta/genome.fa
 	mkdir -p STARIndex/2.7.1a
-	module load star/2.7.3a; STAR --runThreadN 10 --runMode genomeGenerate --genomeDir STARIndex/2.7.1a --genomeFastaFiles genome_fasta/genome.fa
+	/package/anaconda3/envs/STAR-2.7.3a/bin/STAR --runThreadN 10 --limitGenomeGenerateRAM 285000000000  --runMode genomeGenerate --genomeDir STARIndex/2.7.1a --genomeFastaFiles genome_fasta/genome.fa
 	rm -f Log.out
 
 BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2:	genome_fasta/genome.fa
