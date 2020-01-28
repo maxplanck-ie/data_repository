@@ -113,9 +113,9 @@ STARIndex/SAindex:	genome_fasta/genome.fa
 	/package/STAR-2.4.2a/bin/STAR --runThreadN 10 --runMode genomeGenerate --genomeDir STARIndex --genomeFastaFiles genome_fasta/genome.fa
 	rm -f Log.out
 
-STARIndex/2.7.3a/SAindex:	genome_fasta/genome.fa
-	mkdir -p STARIndex/2.7.3a
-	/package/anaconda3/envs/STAR-2.7.3a/bin/STAR --runThreadN 10 --limitGenomeGenerateRAM 285000000000  --runMode genomeGenerate --genomeDir STARIndex/2.7.3a --genomeFastaFiles genome_fasta/genome.fa
+STARIndex/2.7.1a/SAindex:	genome_fasta/genome.fa
+	mkdir -p STARIndex/2.7.1a
+	/package/anaconda3/envs/STAR-2.7.3a/bin/STAR --runThreadN 10 --limitGenomeGenerateRAM 285000000000  --runMode genomeGenerate --genomeDir STARIndex/2.7.1a --genomeFastaFiles genome_fasta/genome.fa
 	rm -f Log.out
 
 BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2:	genome_fasta/genome.fa
@@ -134,7 +134,7 @@ NovoalignMethylIndex/genome:	genome_fasta/genome.fa
 	/package/novoalign-3.07.00/novoindex -b NovoalignMethylIndex/genome NovoalignMethylIndex/genome.fa
 
 #All genome aligner indices are prerequisites
-GENOMEINDICES: HISAT2Index/genome.8.ht2 HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa STARIndex/SAindex STARIndex/2.7.3a/SAindex BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2 NovoalignIndex/genome NovoalignMethylIndex/genome
+GENOMEINDICES: HISAT2Index/genome.8.ht2 HISATIndex/genome.rev.2.bt2 BowtieIndex/genome.rev.2.bt2 BWAindex/genome.fa.sa STARIndex/SAindex STARIndex/2.7.1a/SAindex BismarkIndex/Bisulfite_Genome/GA_conversion/BS_GA.1.bt2 NovoalignIndex/genome NovoalignMethylIndex/genome
 
 #Attempt making the transcriptome construction parallel
 $(gene_gtf_tuple)::
